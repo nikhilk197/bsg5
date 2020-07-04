@@ -13,7 +13,7 @@ app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def home():
-	q = int(request.args['r1'])
+	q = int (request.args['r1'])
 	w = int(request.args['g1'])
 	e = int(request.args['b1'])
 	r = int(request.args['r2'])
@@ -28,10 +28,12 @@ def home():
 	
 	model = keras.models.load_model('aadya2.h5')
 	te= np.array([q,w,e,r,t,u,i,o,p,s,d,f])
-	g=(model.predict(np.reshape(te, (1,12)), batch_size = 1))
+	g=(model.predict(np.reshape(te, (1,12)),batch_size=1))
+	
 	for x in g :
-		a= x
+		a=x
 		for y in a:
 			z= y
-			return str(y)
-app.run(host='0.0.0.0', port=5000, debug=True)
+	return str(y)
+			
+app.run(host = '0.0.0.0' , port = 80 , debug = True) 
